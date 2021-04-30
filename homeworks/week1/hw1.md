@@ -11,3 +11,7 @@
 
 6. 在遠端 github repository 就會發現有 week1 的 branch，這時候可以利用 pull request 將 week1 的進度 merge 到 master ，進入到另一個版面後可以確認一些細項，包含這個 request 是哪個 branch 合併到哪個 branch 、敘述以及改動的部分為何，都確認完後按下 create pull request，這時候就可以複製網址，然後到學習系統交作業。
  
+## 交作業完要做什麼
+
+1. 在 local 端先 checkout 到 master ，然後輸入 `git pull origin master` ，把遠端的拉下來，之後就可以把原本的作業 branch 刪除 `git branch -d branch-name`
+2. 可以開下一周的 branch，寫新的作業 
