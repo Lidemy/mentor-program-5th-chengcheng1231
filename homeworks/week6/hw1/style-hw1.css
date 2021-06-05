@@ -1,0 +1,319 @@
+
+.navbar {
+    box-shadow: -1.4px -1.4px 6px 0 #97a2a0;
+}
+
+.navbar .wrapper {
+    display: flex;
+    justify-content: space-between; /*讓元素左右推開*/
+    align-items: center; /*讓元素垂直置中*/
+    height: 84px;
+    background: white;
+    padding: 0px 24px;
+    
+}
+
+.navbar__site-name {
+    color: #489846 ;
+    font-size: 36px;
+    font-family: qu;
+}
+
+.navbar__list {
+    list-style: none; /*讓符號消失*/
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row; /*讓元素水平*/
+}
+
+.navbar__list li {
+    margin-left: 12px;
+    border-radius: 8px;
+    transition: background 0.2s;
+
+}
+
+.navbar__list li.active, .navbar__list li:hover {
+    background: #ff7286 ;
+}
+
+.navbar__list li.active a, .navbar__list li:hover a {
+    color: white;
+}
+
+.navbar__list li a {
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+    padding: 12px 24px;
+
+}
+
+.wrapper {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0px 12px;
+}
+
+.banner {
+    position: relative;
+    height: 450px;
+    background: url(bg.jpg) center/cover no-repeat;
+}
+
+.banner:after {
+    content: "";
+    position: absolute;
+    background: rgba(0, 0, 0, 0.3);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    
+}
+
+.banner h1 {
+    display: inline-block;
+    position: relative;
+    margin: 0;
+    color: white;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 60px;
+    font-weight: bold;
+    
+
+}
+
+h2 {
+    margin: 0px;
+}
+
+.section {
+    text-align: center;
+}
+
+.section__title {
+    display: inline-block;
+    font-size: 36px;
+    font-weight: bold;
+    border-left: solid 15px #a3dea2;
+    margin-top: 80px;
+    padding-left: 17px;
+    margin-bottom: 36px;
+}
+
+.section__desc {
+    font-size: 16px;
+    line-height: 2em;
+    margin: 0px 0px 68px 0px;
+}
+
+.button {
+    display: inline-block;
+    padding: 60px 30px 10px 30px ;
+    font-size: 36px;
+    border-radius: 10px;
+    color: #3e613d;
+}
+
+.btn-order:hover, .btn-query:hover {
+    transform: scale(1.1)
+}
+
+.btn-order {
+    box-sizing: border-box;
+    width: 300px;
+    height: 160px;
+    background:#a8e8e1 ;
+    cursor: pointer;
+    transition: transform 0.1s;
+    
+}
+
+.btn-query {
+    box-sizing: border-box;
+    width: 300px;
+    height: 160px;
+    background:#f9f9b5 ;
+    margin-left: 23px;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+.section__menu {
+    display: flex;
+}
+
+.section__menu div {
+    width: 50%;
+}
+
+.section__menu img {
+    width: 100%;
+}
+
+.menu__flex {
+    display: flex;
+}
+
+.footer__bottom {
+    background: #35564b;
+    color: white;
+    text-align: center;
+    font-family: MicrosoftJhengHei;
+    font-size: 16px;
+    padding: 15px 0px ;
+}
+
+footer {
+    margin-top: 43px;
+}
+
+.footer__top {
+    background: #e8efee;
+    color: #484848;
+    font-size: 14px;
+    font-family: MicrosoftJhengHei;
+    padding: 44px 20px 39px 107px
+}
+
+.footer__top .wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer__info {
+    margin-right: 16px;
+}
+
+.footer__info div + div {
+    margin-top: 10px;
+}
+
+.footer__site {
+    font-size: 36px;
+    color: #489846;
+}
+
+.footer__site-info {
+    font-size: 14px;
+    color: #484848;
+}
+
+.reviews__section {
+    border-radius: 5px;
+    box-shadow: -1.4px -1.4px 4px 0 #d8eaef;
+    border: solid 1px #c7e5ec;
+    box-sizing: border-box;
+    height: 210px;
+    width: 565px;
+    padding: 45px 10px 10px 10px;
+    position: relative;
+}
+
+.reviews__pic {
+    width: 105px;
+    height: 105px;
+    border-radius: 50%;
+    border: solid 1px #c1c1c1;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.reviews__pic img {
+    
+    width: 100%;
+    height: 100%;
+}
+
+.reviews {
+    display: flex;
+    margin-top: 45px;
+}
+
+.reviews__section + .reviews__section {
+    margin-left: 16px;
+}
+
+
+@media(max-width:768px){ /*RWD*/
+    .navbar .wrapper {
+        height: 120px;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 0px;
+    }
+
+    .navbar__site-name {
+        margin-top: 10px;
+    }
+
+    .navbar__list {
+        display: flex;
+        width: 100%;
+
+    }
+    
+    .navbar__list li {
+        flex: 1;
+        margin-left: 0;
+        border-radius: 0;
+        text-align: center;
+    }
+
+
+    .button {
+        flex-direction: column;
+        padding: 60px 30px 10px 30px;
+    }
+
+    .btn-query { 
+        margin-left: 0px;
+        margin-top: 20px;
+    }
+
+    .menu__flex {
+        flex-direction: column;
+    }
+
+    .footer__top .wrapper {
+        flex-direction: column-reverse;
+    }
+
+    .footer__info {
+        margin-right: 0px;
+        margin-top: 16px;
+    }
+
+    .footer__top {
+        padding: 44px 20px 39px 17px
+    }
+
+    .footer__bottom {
+        padding: 12px
+    }
+
+    .reviews {
+        flex-direction: column;
+    }
+
+    .reviews__section + .reviews__section {
+        margin-left: 0px;
+        margin-top: 60px;
+    }
+
+    .reviews__section {
+        box-sizing: unset;
+        height: inherit;
+        width: inherit;
+        
+    }
+}
+
