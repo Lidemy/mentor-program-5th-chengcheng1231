@@ -1,12 +1,8 @@
-
-
 .debug{
     background: rgba(0, 0, 0, 0.3);
-    
 }
 
 .layout {
-    
     max-width: 645px;
     background: white;
     border-top: solid 8px #fad312;
@@ -19,7 +15,6 @@
     font-family: MicrosoftJhengHei;
     font-size: 34px;
     font-weight: bold;
-    
 }
 
 .sheet__info {
@@ -107,7 +102,12 @@
     cursor: pointer;
 }
 
-.footer {
+.footer__top {
+    background: #fad312;
+    height: 3px;
+}
+
+.footer__bottom {
     background: black;
     color: #999999;
     text-align: center;
