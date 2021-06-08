@@ -1,0 +1,117 @@
+.debug{
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.layout {
+    max-width: 645px;
+    background: white;
+    border-top: solid 8px #fad312;
+    margin: 10% auto;
+    padding: 64px 32px;
+    box-shadow: 1.8px 2.4px 5px 0 rgba(0, 0, 0, 0.3);
+}
+
+.sheet__title {
+    font-family: MicrosoftJhengHei;
+    font-size: 34px;
+    font-weight: bold;
+}
+
+.sheet__info {
+    font-family: MicrosoftJhengHei;
+    font-size: 14px;
+    margin-top: 25px;
+    line-height: 1.8em;
+}
+
+
+.mark {
+    font-family: MicrosoftJhengHei;
+    font-size: 16px;
+    color: #e74149;
+    margin-top: 22px;
+}
+
+.items {
+    font-family: MicrosoftJhengHei;
+    font-size: 20px;
+    margin-top: 48px;
+}
+
+.required:after {
+    content: "*";
+    color: #e74149;
+    font-family: MicrosoftJhengHei;
+    font-size: 20px;
+}
+
+.mark__red {
+    font-family: MicrosoftJhengHei;
+    font-size: 20px;
+    color: #e74149;
+}
+
+.answer {
+    padding: 5px 5px 3px 1px;
+    margin-top: 16px;
+    font-size: 16px;
+}
+
+.answer input[type=text] {
+    border: solid 1px #d0d0d0;
+    padding: 6px ;
+    font-size: 14px;
+}
+
+.choose {
+    margin-top: 24px; 
+    margin-left: 5px;
+    line-height: 1.5em;
+}
+
+.choose label {
+    display: block;
+    margin-top: 12px;
+}
+
+.choose__text {
+    font-size: 14px;
+}
+
+.button {
+    height: 12px;
+    width: 12px;
+    border: solid 1px #d0d0d0;
+    background-color: #bababa;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+.other__text {
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.submit {
+    background: #fad312;
+    padding: 13px 32px;
+    border-radius: 3px;
+    margin-top: 48px;
+    margin-bottom: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.footer__top {
+    background: #fad312;
+    height: 3px;
+}
+
+.footer__bottom {
+    background: black;
+    color: #999999;
+    text-align: center;
+    font-family: MicrosoftJhengHei;
+    font-size: 13px;
+    padding: 26px 0px 21px 0px; ;
+}
