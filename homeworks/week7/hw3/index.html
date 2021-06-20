@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Todo List</title>
+  <link rel="stylesheet" href="./style-hw3.css"/>
+  <link rel="stylesheet "href="https://necolas.github.io/normalize.css/8.0.1/normalize.css"/>
+  
+</head>
+<body>	
+	<form>
+		<div class="list">
+			<div class="Pushpin Pushpin__left"></div>
+			<div class="Pushpin Pushpin__right"></div>
+			<div class="list__title">Todo List</div>			
+			<input name= "addSomething" class="input__box"  
+				placeholder="Add something to do here σ`∀´)σ" 
+				onfocus="this.placeholder = ''" 
+				onblur="this.placeholder = 'Add something to do here σ`∀´)σ'"/>
+			<div class="items">
+				<div class="items__section">				
+					<input class="items__checkbox" type="checkbox"/>
+					<div class="items__text"> Hit the gym</div>
+					<div class="items__delete"></div>
+				</div>
+			</div>			
+		</div>
+	</form>
+
+	<script>		
+		// 以下判斷是否有點選 input，有加上 input__box--border ，沒有則拿掉
+		document.querySelector('.list').addEventListener('click', 
+			function(e) {
+				if (e.target['name'] == 'addSomething') {
+					e.target.classList.add('input__box--border')
+				} else {
+					document.querySelector('input').classList.remove('input__box--border')
+				}				
+			}
+		)
+
+		// 以下當按下 enter 時新增事項
+		document.querySelector('form').addEventListener('submit', 
+			function(e) {
+				e.preventDefault()
+				value = document.querySelector('.input__box').value
+				if (!value) return
+				const div = document.createElement('div')
+				div.classList.add('items__section')
+				div.innerHTML = `
+					<input class="items__checkbox" type="checkbox"/>
+					<div class="items__text">${escapeHtml(value)}</div>
+					<div class="items__delete"></div>
+					`
+
+				document.querySelector('.items').appendChild(div)
+				document.querySelector('.input__box').value =''
+			}
+		)
+
+		// 以下當按下 .items 元素時觸發
+		document.querySelector('.items').addEventListener('click', 
+			function(e) {
+				// 按下 delete 時將父層元素做移除
+				if (e.target.className == 'items__delete') {
+					e.target.parentNode.remove()
+					return
+				} 
+				// 確認是否勾選並 add 或移除刪除線的 class
+				if (e.target.checked) {
+					e.target.parentNode.classList.add('items__done')
+				} else {
+					e.target.parentNode.classList.remove('items__done')
+				}
+			}			
+		)
+
+		// 跳脫 tag 元素
+		function escapeHtml(unsafe) {
+    		return unsafe
+				.replace(/&/g, "&amp;")
+				.replace(/</g, "&lt;")
+				.replace(/>/g, "&gt;")
+				.replace(/"/g, "&quot;")
+				.replace(/'/g, "&#039;");
+ 		}
+	</script>
+</body>
+</html>
