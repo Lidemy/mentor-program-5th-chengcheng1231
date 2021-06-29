@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>常見問題</title>
+  <link rel="stylesheet" href="./style-hw2.css"/>
+  <link rel="stylesheet "href="https://necolas.github.io/normalize.css/8.0.1/normalize.css"/>
+</head>
+
+<body class="debug">
+	<nav class="navbar">
+		<div class="wrapper">
+			<div class="navbar__site-name">
+				Just A Bite!
+			</div>
+			<ul class="navbar__list">
+				<li class="active"><a href="#">抽個大獎</a></li>
+				<li><a href="#">我要點餐</a></li>
+				<li><a href="#">查詢訂單</a></li>
+				<li><a href="#">常見問題</a></li>
+			</ul>
+		</div>
+	</nav>	
+
+	<div class="wrapper">
+		<section class="section">
+			<h2 class="section__title">
+				FAQ - 常見問題
+			</h2>
+		</section>
+	</div>
+
+	<div class="wrapper">
+		<div class="questions">
+			<section class="questions__block">
+				<div class="questions__number">Q1:</div>
+				<div>
+					<div class="questions__description">如何辦理退貨？</div>
+					<div class="questions__answer questions__answer--hide">線上刷卡的使用方式也超簡單，只要您確認您當次的購物清單與金額都無誤，就可立即到匯款上傳系統，登入個人帳號密碼後，點選"線上刷卡方式"，確認收件住址後，再進行刷卡確認程序即可～</div>
+				</div>				
+			</section>
+			<section class="questions__block">
+				<div class="questions__number">Q2:</div>
+				<div>
+					<div class="questions__description">目前提供哪些付款方式？</div>
+					<div class="questions__answer questions__answer--hide">如果你是台灣地區的會員，Pinkoi 提供以下多種付款方式：
+						<br>
+						1. 信用卡（VISA/MasterCard/JCB 付款）
+						<br>
+						2. 7-11 ibon /全家 famiport 代碼繳費
+						<br>
+						3. 7-11 取貨付款（由設計師決定是否提供）
+						<br>
+						4. ATM 轉帳
+						<br>
+						5. Apple Pay
+						<br>
+						6. Alipay 支付寶（僅支援中國大陸實名認證帳戶）
+						<br>
+						7. LINE Pay
+					</div>
+				</div>				
+			</section>
+			<section class="questions__block">
+				<div class="questions__number">Q3:</div>
+				<div>
+					<div class="questions__description">如何辦理退貨？</div>
+					<div class="questions__answer questions__answer--hide">請於收到商品10天猶豫期內(含例假日)，至會員專區線上申請退貨，並將完整商品、贈品、附件連同勾選完成的出貨明細表一併包裝妥善，憑退貨便代碼在48小時內，至7-ELEVEN ibon列印單據後，於櫃檯完成寄件。</div>
+				</div>				
+			</section>
+			<section class="questions__block">
+				<div class="questions__number">Q4:</div>
+				<div>
+					<div class="questions__description">如何查詢目前訂單的處理情況？</div>
+					<div class="questions__answer questions__answer--hide">請至【會員中心】輸入您的帳號及密碼登入會員帳戶，點選【訂購紀錄】即可查詢該訂單狀況。</div>
+				</div>				
+			</section>
+			<section class="questions__block">
+				<div class="questions__number">Q5:</div>
+				<div>
+					<div class="questions__description">訂單成立後，是否可以取消或是更改訂單數量及商品？</div>
+					<div class="questions__answer questions__answer--hide">訂單成立送出之後，即無法再進行任何訂單內容的變更。 </div>
+				</div>				
+			</section>
+			<section class="questions__block">
+				<div class="questions__number">Q6:</div>
+				<div>
+					<div class="questions__description">我想購買的商品已經缺貨，什麼時候會進貨呢？</div>
+					<div class="questions__answer questions__answer--hide">如商品頁面按鈕顯示「聯絡店主」，請您點選該按鈕並填寫您的電子郵件，商品到貨後系統會依登記順序及到貨數量陸續發送E-mail通知（部份熱賣商品，如到貨數量＜貨到通知數量，則有可能無法收到通知）。</div>
+				</div>				
+			</section>
+		</div>
+	</div>
+
+	<footer>
+		<div class="footer__top">
+			<div class="wrapper">
+				<div class="footer__info">
+					<div>餐館地址: 天上地下天堂路三分之一里六段520號</div>
+					<div>訂位專線：02-1314-5566</div>
+					<div>營業時間：週一〜週五 09:00~18:00 / 週六、週日、國定假日（含連假）休息</div>
+					<div>email：service@justabite.com.tw</div>	
+				</div>
+				<div class="footer__site-info">
+					<div class="footer__site">Just A Bite!</div>
+					<div>Facebook / Instagram / Youtube</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer__bottom">
+			Copyright © 2020 Just A Bite All Rights Reserved. 咬一口股份有限公司版權所有
+		</div>
+	</footer>
+    
+	<script>
+		document
+			.querySelector('.questions')
+			.addEventListener('click', function(e) {				
+				if (e.target.className === "questions__description") {
+					const element = e.target.parentNode.querySelector('.questions__answer')
+					element.classList.toggle('questions__answer--hide')
+				}				
+			})
+	</script>
+ 
+</body>
+</html>
