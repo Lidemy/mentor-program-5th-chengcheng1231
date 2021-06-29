@@ -1,0 +1,118 @@
+.list {
+    max-width: 645px;
+    background: #f8f6e187;
+    margin: 10% auto;
+    padding: 64px 32px;
+    box-shadow: 1.8px 2.4px 5px 2px rgba(0, 0, 0, 0.3);
+    position: relative; 
+    text-align: center;
+}
+
+.list__title {
+    font-family: Microsoft JhengHei;
+    font-size: 50px;
+    font-weight: bold;
+    color: #1b9bacf5;
+    text-align: center;
+}
+
+.Pushpin {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #1b9bac87;
+    box-shadow: 0.8px 1.4px 5px 1px rgba(0, 0, 0, 0.3);
+}
+
+.Pushpin__left {
+    top: 32px;
+}
+
+.Pushpin__right {
+    top: 32px;
+    right: 30px;
+}
+
+.input__box {
+    font-size: 24px;
+    font-family: Microsoft JhengHei;
+    margin: 20px auto;
+    padding-bottom: 8px;
+    width: 540px;
+    height: 42px;
+    background: #f1f0e487;
+    border: none;
+    position: relative;
+    box-sizing: border-box;
+
+}
+
+.input__box--border {
+    border-bottom: 2px solid #1b9bac87;
+    color: #1b9bacf5;
+}
+
+::placeholder {
+    color: rgb(184, 184, 184);
+}
+
+textarea:focus, input:focus{  /* input tag 在輸入時不要有外框*/
+    outline: none;
+}
+
+.items__section {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    position: relative;
+    padding: 12px;
+}
+
+.items__section:hover{
+    background: white;
+}
+
+.items__text {
+    margin-left: 10px;
+    font-size: 24px;
+    font-family: Microsoft JhengHei;
+    color: #1b9bacf5;
+}
+
+.items__done {
+    text-decoration: line-through;
+    color:#1b9bacf5;
+}
+
+.items__delete {
+    position: absolute;
+    right: 10px;
+    height: 24px;
+    width: 24px;
+    cursor: pointer;
+}
+
+.items__delete::after, .items__delete::before{
+    content: "";
+    width: 100%;
+    height: 1.5px;
+    background: #1b9bacf5;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+.items__delete::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.items__delete::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.items__checkbox {
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+}
