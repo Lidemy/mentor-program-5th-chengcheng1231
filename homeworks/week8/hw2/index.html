@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Twitch Top Games</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./style-week8-2.css"/>
+  <link rel="stylesheet "href="https://necolas.github.io/normalize.css/8.0.1/normalize.css"/>
+</head>
+
+<body>
+	<nav class="navbar">
+		<div class="navbar__site-name">
+			Twitch Top Games
+		</div>
+		<ul class="navbar__list">
+		</ul>
+	</nav>	
+	<section class="banner">
+		<div class="gameInformation">
+			<div class="gameName"></div>
+			<div> Top 20 popular live streams sorted by current viewers</div>
+		</div>		
+		<div class="streamSection">
+		</div>
+	</section>
+
+	<script>
+		const reqTopfive = new XMLHttpRequest()		
+		const API_URL = 'https://api.twitch.tv/kraken'
+		const API_CLIENT_ID = '8j80nypdts7hk726mmtk4yh67c54af'
+		const STREAM_TEMPLATE = `
+					<div class="streamScreen">
+						<img src="$preview">
+					</div>
+					<div class="streamerInformation">
+						<div class="streamerIcon">
+							<img src="$logo">
+						</div>
+						<div class="streamerText">
+							<div class="streamerTheme"> $status</div>
+							<div class="streamerName">$display_name</div>
+						</div>
+					</div>
+					
+					`
+		
+		getTopfiveGames ( function(response) {
+			for (let i=0 ; i < 5; i++) {
+				let element =document.createElement('li')
+				element.innerHTML = `<a href="#">${response[i].game.name}</a>`
+				document.querySelector('.navbar__list').appendChild(element)				
+			}				
+			changeChannel (response[0].game.name)	
+		})
+
+		function getTopfiveGames (callback) {
+			reqTopfive.open('GET', `${API_URL}/games/top`, true)		
+			reqTopfive.setRequestHeader('Client-ID', API_CLIENT_ID)
+			reqTopfive.setRequestHeader('Accept','application/vnd.twitchtv.v5+json')				
+			reqTopfive.onload = function() {
+				if(this.status >= 200 && this.status < 400) {
+					let response = JSON.parse(reqTopfive.responseText).top
+					callback(response)						
+				}
+			}
+			reqTopfive.onerror = function() {
+				console.log(errorMessage)
+				}
+			reqTopfive.send();
+		}
+		
+
+		document.querySelector('.navbar__list').addEventListener('click', 
+			function(e) {
+				changeChannel (e.target.innerText)
+			}
+		)
+		
+
+		function changeChannel(gameName) {
+			getStreams(gameName, function(streamerData) {
+				document.querySelector('.streamSection').innerHTML = ''
+				document.querySelector('.gameName').innerHTML = gameName
+				for (let i=0 ; i < 20; i++) {
+					const div = document.createElement('div')
+					div.classList.add('streamWindow')			
+					div.innerHTML = STREAM_TEMPLATE
+						.replace('$preview', streamerData[i].preview.large)
+						.replace('$logo', streamerData[i].channel.logo)
+						.replace('$status', streamerData[i].channel.status)
+						.replace('$display_name', streamerData[i].channel.display_name)					
+					document.querySelector('.streamSection').appendChild(div)															
+				}							
+			})
+		}
+		
+		function getStreams (gameName, callback) {				
+			const reqContent = new XMLHttpRequest()		
+			reqContent.open('GET', `${API_URL}/streams?game=${encodeURIComponent(gameName)}`, true) 	
+			reqContent.setRequestHeader('Client-ID', API_CLIENT_ID)
+			reqContent.setRequestHeader('Accept','application/vnd.twitchtv.v5+json')		
+			
+			reqContent.onload = function() {
+				if(this.status >= 200 && this.status < 400) {			
+					let streamerData = JSON.parse(reqContent.responseText).streams
+					callback(streamerData)					
+				}
+			}			
+			reqContent.onerror = function() {
+					console.log(errorMessage)
+					}
+			reqContent.send();
+		}
+	</script>
+</body>
+</html>

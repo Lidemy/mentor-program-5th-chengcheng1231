@@ -1,0 +1,178 @@
+.navbar {
+    box-shadow: -1.4px -1.4px 6px 0 #97a2a0;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; /*讓元素左右推開*/
+    align-items: center; /*讓元素垂直置中*/
+    background: white;
+    padding: 0px 24px;
+}
+
+.navbar__site-name {
+    color: #444243 ;
+    font-size: 36px;
+    font-family: Microsoft JhengHei;
+    font-weight: bold;
+    padding: 18px;
+}
+
+.navbar__list {
+    list-style: none; /*讓符號消失*/
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row; /*讓元素水平*/
+}
+
+.navbar__list li {
+    margin-left: 12px;
+    transition: background 0.2s;
+    font-family: Microsoft JhengHei;
+    font-weight: bold;
+    
+}
+
+.navbar__list li:hover {
+    background: #444243 ;
+}
+
+.navbar__list li:hover a {
+    color: white;
+}
+
+.navbar__list li a {
+    display: inline-block;
+    text-decoration: none;
+    color: #444243 ;
+    padding: 30px 18px;
+}
+
+
+.banner {
+    background: url(twitch-background.jpg) center/cover no-repeat;
+    text-align: center;
+}
+
+.gameInformation {
+    color: white;
+    font-family: Microsoft JhengHei;
+    font-size: 30px;
+    font-weight: bold;
+    padding-top: 50px;
+}
+
+.gameName {
+    padding: 20px;
+    font-family: Microsoft JhengHei;
+    font-size: 30px;
+}
+
+.streamSection {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1100px;
+    margin: 36px auto 10px auto;
+
+}
+
+.streamWindow {
+    border: 2px solid #444243 ;
+    height: 250px;
+    max-width: 350px;
+    margin: 6px;
+    cursor:pointer;
+    transition: transform 0.1s;
+}
+
+.streamWindow:hover {
+    transform: scale(1.05)
+}
+
+.streamScreen {
+    height: 70%;
+}
+
+div img{
+    width: 100%;
+    height: 100%;
+    object-fit:cover;
+}
+
+.streamerInformation {
+    display: flex;
+    align-items: flex-start;
+    background: #444243;
+    height: 30%;
+}
+
+.streamerIcon {
+    width: 66px;
+    height: 66px;
+    border-radius: 50%;
+    margin: auto 0;
+    overflow: hidden;
+}
+
+.streamerText {
+    text-align: left;
+    width: 254px;
+    padding: 14px;
+    margin: auto 0;
+    color: white;
+    font-family: Microsoft JhengHei;
+}
+
+.streamerTheme {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.streamerName {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px;
+}
+
+
+
+@media(max-width:1111px){ /*RWD*/
+    .navbar__site-name {
+        padding: 12px;
+    }
+
+    .navbar__list {
+        display: block;
+    }
+    
+    .navbar__list li {
+        flex: 1;
+        margin-left: 0;
+        border-radius: 0;
+        text-align: center;
+    }
+
+    .navbar__list li a {
+        padding: 18px 10px;
+    }
+
+    .navbar {
+        display: block;
+        padding: 0px 12px;
+
+    }
+
+    .streamWindow{
+        margin: 10px auto 10px auto;
+    }
+
+}
+
+
+
