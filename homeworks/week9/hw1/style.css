@@ -1,0 +1,153 @@
+body {
+    margin: 0px;
+    font-family:Microsoft JhengHei ;
+}
+
+p {
+    font-weight: bold;
+}
+
+.warning {
+    background: lightpink;
+    text-align: center;
+    padding: 8px;
+    font-weight: bold;
+    color: rgb(124, 34, 34);
+}
+
+.board {
+    position: relative;
+    background: white;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 1px 1px 3px grey;
+    border-radius: 10px;
+    margin-top: 10px;
+    padding: 20px;
+}
+
+.title {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.functionSection {
+    position: absolute;
+    display: inline-flex;
+    justify-content: flex-end;
+    width: 93%;
+}
+
+.functionSection__btn {
+    border-radius: 5px;
+    width: 80px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    box-shadow: 1px 1px 3px rgb(206, 201, 201);
+    color: grey;
+    font-size: 16px;
+    background: white;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: transform 0.1s;
+    text-decoration: none;
+}
+
+.functionSection__btn:hover {
+    transform: scale(1.05);
+    background: rgb(206, 201, 201);
+    color: white;
+}
+
+.functionSection__btn {
+    margin-left: 10px;
+}
+
+.form__textarea{
+    width: 100%;
+    padding: 6px;
+    border: 1px solid rgb(18, 114, 50);
+    box-sizing: border-box;
+}
+
+.board__submit-btn {
+    position: relative;
+    padding: 8px;
+    border-radius: 5px;
+    width: 120px;
+    border: 1px solid rgb(18, 114, 50);
+    color: white;
+    font-size: 16px;
+    background: rgb(18, 114, 50);
+    left: 80%;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: transform 0.2s;
+}
+
+.board__submit-btn:hover {
+    transform: scale(1.05);
+    background: rgb(75, 184, 112);
+    border: 1px solid rgb(75, 184, 112);
+}
+
+.inputError {
+    color: brown;
+    font-size: 14px;
+}
+
+input {
+    margin-bottom: 8px;
+    border: 1px solid rgb(18, 114, 50);
+}
+
+.board__hr {
+    max-width: 100%;
+    height: 2px;
+    background: rgb(224, 224, 224);
+    margin: 16px auto 0px auto;
+}
+
+.messageSection {
+    margin-top: 30px;
+}
+
+.messageWindow{
+    display: inline-flex;
+    width: 100%;
+    margin-top: 16px;
+}
+
+.messageWindow__avatar {
+    min-width: 60px;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    background: rgb(179, 226, 195);
+}
+
+.messageWindow__information{
+    width: 88%;
+    margin-left: 10px;
+    word-wrap: break-word;
+    font-size: 14px;
+}
+
+.messageWindow__name {
+    color: rgb(18, 114, 50);
+    font-weight: bold ;
+}
+
+.messageWindow__time {
+    color: grey;
+    margin-left: 4px;
+}
+
+.messageWindow__text {
+    font-size: 10px;
+    margin-top: 6px;
+    font-weight: bold ;
+    white-space: pre-line;
+}
