@@ -3,7 +3,7 @@
     require_once("conn.php");
     require_once("utils.php");
 
-    if(empty($_POST['content'])) {
+    if(empty($_POST['content']) || empty($_SESSION['username'])) {
         header('Location:update_comment.php?errCode=1&id='.$_POST['id']);
         die('請輸入留言');
     }
