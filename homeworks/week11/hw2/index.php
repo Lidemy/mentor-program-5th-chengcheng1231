@@ -88,7 +88,7 @@
                         <?php echo $rowAll[$i]['created_time']?>
                     </div>
                     <div class="post__header">
-                        <a class="post__title" href="article.php?list=<?php echo escape($rowAll[$i]['id'])?>"><?php echo $rowAll[$i]['title']?></a>
+                        <a class="post__title" href="article.php?list=<?php echo escape($rowAll[$i]['id'])?>"><?php echo escape($rowAll[$i]['title'])?></a>
                     </div>
                     <div class="post__content"> <?php echo StubUTF8String(escape($rowAll[$i]['content']), 150) . '...';?>
                     </div>

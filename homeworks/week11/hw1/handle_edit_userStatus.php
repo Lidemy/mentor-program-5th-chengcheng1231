@@ -30,6 +30,7 @@
 
     
     if(!$result) {
+        header("Location:manage_users.php?errCode=1");
         die($conn->error);
     }
 

@@ -35,7 +35,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title><?php echo $row['username'] ?>'s Blog</title>
+  <title><?php echo escape($row['username']) ?>'s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="normalize.css"/>
   <link rel="stylesheet" href="style.css"/>
@@ -45,7 +45,7 @@
     <nav class="navbar">
         <div class="wrapper navbar__wrapper">
             <div class="navbar__site-name">
-                <a href='./index.php'><?php echo $row['username'] ?>'s Blog</a>
+                <a href='./index.php'><?php echo escape($row['username']) ?>'s Blog</a>
             </div>
             <ul class="navbar__list">
                 <div>
@@ -71,22 +71,22 @@
                             <img src="trump.jpg"/>
                         </div>
                         <div class="post__authorName">
-                            <?php echo $row['username']?>
+                            <?php echo escape($row['username'])?>
                         </div>
                     </div>
                     <form class="form" method="POST" action="./handle_edit_article.php">
-                        <input class="form__title" type="text" name="form__title" value="<?php echo $row['title'] ?>"/><br>
+                        <input class="form__title" type="text" name="form__title" value="<?php echo escape($row['title']) ?>"/><br>
                         <select class="form__category" name="form__category">
-                            <option value="<?php echo $row['category'] ?>" selected hidden>
-                                <?php echo $row['category'] ?>
+                            <option value="<?php echo escape($row['category']) ?>" selected hidden>
+                                <?php echo escape($row['category']) ?>
                             </option>
                             <?php for($i=0; $i<count($array); $i++) { ?>
                             <option value="<?php echo $array[$i] ?>"><?php echo $array[$i]; ?></option>
                             <?php }?>
                         </select><br>
                         <br>
-                        <textarea class="form__textarea" type='text' name='content' rows="10"><?php echo $row['content'] ?></textarea><br>
-                        <input type="hidden" name="id" value="<?php echo $row['id']?>"/>
+                        <textarea class="form__textarea" type='text' name='content' rows="10"><?php echo escape($row['content']) ?></textarea><br>
+                        <input type="hidden" name="id" value="<?php echo escape($row['id'])?>"/>
                         <input class="form__submit-btn" type="submit" value="Update"/>
                     </form>
                     <?php
@@ -105,7 +105,7 @@
             <div class="layout__space"></div>
         </div>
     </div>
-    <footer>Copyright © 2020 <?php echo $row['username'] ?>'s Blog All Rights Reserved.</footer>
+    <footer>Copyright © 2020 <?php echo escape($row['username']) ?>'s Blog All Rights Reserved.</footer>
     <script>
     </script>
 </body>
