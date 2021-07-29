@@ -1,6 +1,7 @@
 <?php
     session_start();
     require_once('conn.php');
+    require_once('utils.php');
 
     $session_username = NULL;
     if (!empty($_SESSION['username'])) {
@@ -29,7 +30,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title><?php echo $rowAll[0]['username'] . "'s blog"?></title>
+  <title><?php echo escape($rowAll[0]['username']) . "'s blog"?></title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="normalize.css" />
   <link rel="stylesheet" href="style.css" />
@@ -39,7 +40,7 @@
     <nav class="navbar">
         <div class="wrapper navbar__wrapper">
             <div class="navbar__site-name">
-                <a href='index.php'><?php echo $rowAll[0]['username'] . "'s blog"?></a> 
+                <a href='index.php'><?php echo escape($rowAll[0]['username']) . "'s blog"?></a> 
             </div>
             <ul class="navbar__list">
                 <div>
@@ -65,22 +66,22 @@
             <?php for($i=0; $i<count($rowAll); $i++) { ?>
                 <article class="post">
                     <div class="post__header">
-                    <a class="post__title" href="article.php?list=<?php echo $rowAll[$i]['id']?>"><?php echo $rowAll[$i]['title']?></a>             
+                    <a class="post__title" href="article.php?list=<?php echo escape($rowAll[$i]['id'])?>"><?php echo escape($rowAll[$i]['title'])?></a>             
                     </div>
                     <div class="post__info">
                         <div class="post__authorName">
-                            <?php echo $rowAll[$i]['username']?>
+                            <?php echo escape($rowAll[$i]['username'])?>
                         </div>
                         <div class="post__time">
-                            <?php echo $rowAll[$i]['created_time']?>
+                            <?php echo escape($rowAll[$i]['created_time'])?>
                         </div>
                         <div class="post__category">
-                            <?php echo $rowAll[$i]['category']?>
+                            <?php echo escape($rowAll[$i]['category'])?>
                         </div>
                         <?php if ($rowAll[$i]['username'] == $session_username) {?>
                         <div class="post__actions">
-                            <a class="post__action-btn" href="edit_article.php?blog=<?php echo $rowAll[$i]['username']?>&list=<?php echo $rowAll[$i]['id'] ?>">Edit</a>
-                            <a class="post__action-btn" href="handle_delete_article.php?blog=<?php echo $rowAll[$i]['username']?>&list=<?php echo $rowAll[$i]['id'] ?>">Delete</a>
+                            <a class="post__action-btn" href="edit_article.php?blog=<?php echo escape($rowAll[$i]['username'])?>&list=<?php echo escape($rowAll[$i]['id']) ?>">Edit</a>
+                            <a class="post__action-btn" href="handle_delete_article.php?blog=<?php echo escape($rowAll[$i]['username'])?>&list=<?php echo escape($rowAll[$i]['id']) ?>">Delete</a>
                         </div>
                         <?php } ?>
                     </div>
@@ -91,6 +92,6 @@
             <div class="layout__space"></div>
         </div>
     </div>
-    <footer>Copyright © 2020 <?php echo $rowAll[0]['username'] . "'s"?> Blog All Rights Reserved.</footer>  <!--php-->
+    <footer>Copyright © 2020 <?php echo escape($rowAll[0]['username']) . "'s"?> Blog All Rights Reserved.</footer>  <!--php-->
 </body>
 </html>

@@ -59,7 +59,7 @@ $sql = insert into comments(nickname, content) values('howhow', 'am hacker'),('f
 
 防範：利用 htmlspecialchars() 來將呈現的內容做規避
 1. 若常使用的話可將其函式化
-2. 推薦將資料先做規避後存入資料庫，而是呈現時再做，主要原因為手機 android 或 ios 也會5抓資料庫的內容做顯示，但他們看不懂被轉換後的資料
+2. 不推薦將資料先做規避後存入資料庫，而是呈現時再做，主要原因為手機 android 或 ios 也會抓取資料庫的內容做顯示，但他們看不懂被轉換後的資料
 3. 將所有使用者可調控的地方做規避
 ## 請說明 CSRF 的攻擊原理以及防範方法
 ---

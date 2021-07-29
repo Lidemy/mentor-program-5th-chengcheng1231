@@ -95,7 +95,7 @@
                             (You)
                         <?php }?>
                     </div>
-                    <form class='edit__userStatus hide' action="edit__userStatus.php?id=<?php echo escape($row['id']); ?>" method="post">
+                    <form class='edit__userStatus hide' action="handle_edit_userStatus.php?id=<?php echo escape($row['id']); ?>" method="post">
                         <select name="identity">
                             <option value="none" selected disabled hidden>
                             --Select--
@@ -112,7 +112,16 @@
             <?php }?>
         </table>
 
-
+        <?php 
+            if(!empty($_GET['errCode'])) {
+                $code =$_GET['errCode'];
+                $msg ='Error';
+                if ($code === '1') {
+                    $msg = '無此動作';
+                };
+                echo '<h2 class="inputError">' . $msg .'</h2>';
+            };
+        ?>
     </div>
 
     <script>
