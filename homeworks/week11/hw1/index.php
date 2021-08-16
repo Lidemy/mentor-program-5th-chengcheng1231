@@ -94,6 +94,9 @@
                 if ($code === '1') {
                     $msg = '資料不齊全';
                 };
+                if ($code === '2') {
+                    $msg = '您沒有權限';
+                };
                 echo '<h2 class="inputError">' . $msg .'</h2>';
             };
         ?>

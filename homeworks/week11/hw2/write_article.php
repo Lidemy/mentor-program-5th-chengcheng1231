@@ -15,7 +15,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title><?php echo $session_username?>'s Blog</title>
+  <title><?php echo escape($session_username)?>'s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="normalize.css" />
   <link rel="stylesheet" href="style.css" />
@@ -24,7 +24,7 @@
     <nav class="navbar">
         <div class="wrapper navbar__wrapper">
             <div class="navbar__site-name">
-                <a href='index.php'><?php echo $session_username?>'s Blog</a>
+                <a href='index.php'><?php echo escape($session_username)?>'s Blog</a>
             </div>
             <ul class="navbar__list">
                 <div>
@@ -50,7 +50,7 @@
                             <img src="trump.jpg"/>
                         </div>
                         <div class="post__authorName">
-                            <?php echo $session_username?>
+                            <?php echo escape($session_username)?>
                         </div>
                     </div>
                    
@@ -84,7 +84,7 @@
             <div class="layout__space"></div>
         </div>
     </div>
-    <footer>Copyright © 2020 <?php echo $session_username?>'s Blog All Rights Reserved.</footer>
+    <footer>Copyright © 2020 <?php echo escape($session_username)?>'s Blog All Rights Reserved.</footer>
     <script></script>
 </body>
 </html>

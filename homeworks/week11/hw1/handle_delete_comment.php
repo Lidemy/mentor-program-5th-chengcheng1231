@@ -3,9 +3,9 @@
     require_once("conn.php");
     require_once("utils.php");
 
-    if(empty($_GET['id'])) {
-        header('Location:index.php?errCode=1');
-        die('請輸入留言');
+    if(empty($_GET['id']) || empty($_SESSION['username'])) {
+        header('Location:index.php?errCode=2');
+        die('error');
     }
 
     $id =$_GET['id'];

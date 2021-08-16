@@ -85,8 +85,8 @@
                     </div>
                     <?php if ($row['username'] == $session_username) {?>
                     <div class="post__actions">
-                        <a class="post__action-btn" href="edit_article.php?blog=<?php echo escape($row['username']) ?>&list=<?php echo $id ?>">Edit</a>
-                        <a class="post__action-btn" href="handle_delete_article.php?blog=<?php echo escape($row['username'])?>&list=<?php echo $id ?>">Delete</a>
+                        <a class="post__action-btn" href="edit_article.php?blog=<?php echo escape($row['username']) ?>&list=<?php echo escape($id) ?>">Edit</a>
+                        <a class="post__action-btn" href="handle_delete_article.php?blog=<?php echo escape($row['username'])?>&list=<?php echo escape($id) ?>">Delete</a>
                     </div>
                     <?php }?>
                     <div class="post__allContent"><?php echo escape($row['content'])?>
