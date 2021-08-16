@@ -3,11 +3,12 @@
     require_once("conn.php");
     function getUserFromUsername($username) {
         global $conn;
-        $sql = sprintf("SELECT * FROM chengcheng_hw9_users WHERE username='%s'", 
-        $username
-        );
+        $sql = "SELECT * FROM chengcheng_hw9_users WHERE username=?";
 
-        $result = $conn->query($sql);
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param('s', $username);
+        $result = $stmt->execute();
+        $result = $stmt -> get_result();
         $row = $result->fetch_assoc();
         return $row;
     } 
