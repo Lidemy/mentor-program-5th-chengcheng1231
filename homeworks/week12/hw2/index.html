@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf8" />
+		<title> Boostrap </title> 
+		<script src="https://code.jquery.com/jquery-3.6.0.js">
+		</script>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+		<style>
+            .card:hover {
+               background: #fbf9ea8f;
+            }
+
+            .card .normalMode input[type=text] {
+                display:none;
+            }
+
+            .card .editMode input[type=text]{
+                margin-left: 8px;
+                min-width: 400px;
+            }
+
+            .card .editMode .card-text{
+                display:none;
+            }
+
+            .strikethrough {
+                text-decoration: line-through;
+                color: rgb(148, 148, 148);
+            }
+		</style>
+    </head>
+    <body>
+        <div class="container col-6">
+            <div class="input-group mb-3 mt-4">
+                <input type="text" class="form-control user-id" placeholder="Please enter user id if you have" aria-label="Recipient's username" aria-describedby="button-addon2">
+                <button class="btn btn-outline-secondary btn-user-id" type="button" id="button-addon2">Enter</button>
+            </div>
+            <form class="add-comment-form">
+                <div class="mb-3">
+                    <label for="form-nickname" class="h4">Todos</label>
+                    <input name="nickname" type="text" class="form-control add-task" id="form-nickname" placeholder="What needs to be done">
+                </div>
+            </form>
+            <div class="mb-3 d-flex justify-content-between">
+                <button class="btn btn-danger btn-close-completed" type="submit">清空已完成 todos</button>
+                <button class="btn btn-danger btn-close-all" type="submit">清空所有 todos</button>
+                <button class="btn btn-success btn-save" type="submit">儲存 todos</button>
+                <div>
+                    <button class="btn btn-info btn-show-all" type="submit">全部</button>
+                    <button class="btn btn-info btn-uncompleted" type="submit">未完成</button>
+                    <button class="btn btn-info btn-completed" type="submit">已完成</button>
+                </div>
+            </div>
+            <div class="uncomplete-count-block"><span class="uncomplete-count"></span></div>
+
+            <div class="todolist mt-2">
+            </div>
+        </div>
+        <script>
+            let todoCount = 0
+            let uncompleteTodoCount = 0
+            const html = `
+                <div class="{card_status}">
+                    <div class="card-body d-flex justify-content-between normalMode">
+                        <div class="d-flex">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" {checked_todo}>
+                            <div class="card-text ms-2 {text_strikethrough}">{todotext}</div>
+                            <input type="text">
+                        </div>
+                        <div>
+                            <button type="button" class="btn-edit btn btn-outline-dark btn-sm">編輯</button>
+                            <button type="button" class="btn-close" aria-label="Close"></button>
+                        </div>
+                    </div>
+                </div>
+            `
+
+            function showTodosToDOM(id) {
+                $.ajax({
+                    url: "https://mentor-program.co/mtr04group6/chengcheng/week12/to-do-list/api_todos.php?id=" + id +"",
+                }).done(function(data) {
+                    if(!data.ok) {
+                        alert(data.message)
+                        return
+                    }
+                    $('.todolist').empty()
+                    const TodoDOM = $('.todolist')
+                    todos = JSON.parse(data.todo.data)
+                    
+                    for (let todo of todos) {
+                        appendTodoToDOM(TodoDOM, todo)
+                    }                     
+                })       
+            }
+
+            function appendTodoToDOM(container, todo) {
+                console.log(todo)
+                todoCount++
+                if (todo.completed === 1) {
+                    var card_status = `card completed`
+                    var text_strikethrough = `strikethrough`
+                    var checked_todo = `checked='checked'`
+                } else {
+                    var card_status = `card`
+                    var text_strikethrough = ``
+                    var checked_todo = ``
+                    uncompleteTodoCount++
+                }
+                
+                container.append(
+                    html
+                        .replace('{card_status}', card_status)
+                        .replace('{text_strikethrough}', text_strikethrough)
+                        .replace('{checked_todo}', checked_todo)
+                        .replace('{todotext}', encodeHTML(todo.todotext))
+                )
+                updateCounter()
+            }
+
+            function encodeHTML(s) { // js escape xss
+                return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+            }
+
+            function updateCounter(){
+                $('.uncomplete-count').text("未完成：" + uncompleteTodoCount + "，項目：" + todoCount)
+            }
+            
+            // add todo
+            $(".add-task").keypress(function (e) {
+                if ((e.which == 13)&&(!$(this).val().length == 0)) {
+                    var todotext = $(this).val();
+                    var card_status = `card`;
+                    var text_strikethrough = ``;
+                    var checked_todo = ``;
+
+                    $('.todolist').prepend(
+                        html
+                            .replace('{card_status}', card_status)
+                            .replace('{text_strikethrough}', text_strikethrough)
+                            .replace('{checked_todo}', checked_todo)
+                            .replace('{todotext}', encodeHTML(todotext))
+                    );
+                    $(this).val('');
+                    todoCount++
+                    uncompleteTodoCount++
+                    updateCounter()
+                    e.preventDefault();
+                } else if(e.which == 13) {
+                    e.preventDefault();
+                };
+            });
+            
+            // delete todo
+            $('.todolist').on('click','.btn-close', function(e) { 
+                todoCount--
+                if (!($(this).parent().parent().parent().hasClass('completed'))) {
+                    uncompleteTodoCount--
+                }
+                updateCounter()
+
+                $(this).parent().parent().parent().remove()
+            })
+
+            // delete completed todos
+            $('.btn-close-completed').click(function(e) {
+                $('.card.completed').each( function(i,el) {
+                    todoCount--
+                    el.remove()
+                })
+                updateCounter()
+            })
+
+            // delete all todos
+            $('.btn-close-all').click(function(e) {
+                $('.card').each( function(i,el) {
+                    todoCount--
+                    if(!$(this).hasClass('completed')) {
+                        uncompleteTodoCount--
+                    }
+                })
+                updateCounter()
+                document.location = "https://mentor-program.co/mtr04group6/chengcheng/week12/to-do-list/index.html";
+                $('.todolist').empty()
+            })
+
+            // complete todo
+            $('.todolist').on('click', '.form-check-input', function(e) {
+                if ($(this).parent().parent().parent().hasClass('completed')) {
+                    uncompleteTodoCount++
+                } else {
+                    uncompleteTodoCount--
+                }
+                updateCounter()
+                $(this).parent().find('.card-text').toggleClass("strikethrough")
+                $(this).parent().parent().parent().toggleClass('completed')
+                
+            })
+            
+            // select completed
+            $('.btn-completed').click(function(e) {
+                var elements = $('.todolist').find('.card')                  
+                $.each(elements, function() {
+                    if ($(this).hasClass('completed')) {                       
+                        $(this).show()
+                    } else {
+                        $(this).hide()
+                    }
+                });           
+            })
+
+            // select uncompleted
+            $('.btn-uncompleted').click(function(e) {
+                var elements = $('.todolist').find('.card')
+                $.each(elements, function() {
+                    if ($(this).hasClass('completed')) {
+                        $(this).hide()
+                    } else {
+                        $(this).show()
+                    }
+                });           
+            })
+
+            // select all todos
+            $('.btn-show-all').click(function(e) {
+                $('.todolist').find('.card').show()
+            })
+            
+            // edit todo
+            $('.todolist').on('click','.btn-edit', function(e) {
+                var listItem = $(this).parent().parent()
+                var editInput = listItem.find('input[type=text]')
+                var todoText = listItem.find('.card-text');
+                
+                var containsClass = listItem.hasClass("editMode");
+                if(containsClass){
+                    todoText.text(editInput.val())
+                    listItem.find('.btn-edit').text('編輯')
+                    
+                } else{
+                    editInput.val(todoText.text())
+                    listItem.find('.btn-edit').text('更新')
+                }
+                listItem.toggleClass("normalMode")
+                listItem.toggleClass("editMode")
+            })
+            
+            // click button to enter id and set the url
+            $('.btn-user-id').click(e => {
+                document.location = "https://mentor-program.co/mtr04group6/chengcheng/week12/to-do-list/index.html?id=" + $('.user-id').val() +"";
+            })
+
+            // use keyboard to enter id and set the url
+            $(".user-id").keypress(function (e) {
+                if ((e.which == 13)) {
+                    document.location = "https://mentor-program.co/mtr04group6/chengcheng/week12/to-do-list/index.html?id=" + $('.user-id').val() +"";
+                }
+            })
+            
+            // save the data to db and send back the id
+            $('.btn-save').click(e => {
+                var elements = $('.todolist').find('.card')
+                var todos = []
+                $.each(elements, function() {
+                    var todo = {}
+                    todo["todotext"] = $(this).find('.card-text').text()
+                    if ($(this).hasClass('completed')) {
+                        todo["completed"] = 1
+                    } else {
+                        todo["completed"] = null
+                    }
+                    todos.push(todo)
+                });
+
+                const data = JSON.stringify(todos)
+
+                $.ajax({
+                    type: 'POST',
+                    url: "https://mentor-program.co/mtr04group6/chengcheng/week12/to-do-list/api_add_todos.php",
+                    data: {todo: data},
+                    success: function(res) {
+                        alert('Saved！ Your user id is：'+ res.id + ' , please keep it.')
+                        window.location = 'index.html?id=' + res.id
+                    },
+                    error: function() {
+                        alert('error')
+                    }
+                })
+                
+            })
+
+            $(document).ready(() => {
+                let searchParams = new URLSearchParams(window.location.search)
+                if (searchParams.has('id')) {
+                    var id = searchParams.get('id')
+                    showTodosToDOM(id)
+                }
+                 
+                $('.uncomplete-count').text("未完成：" + uncompleteTodoCount + "，項目：" + todoCount)
+                   
+            })
+        </script>
+		
+	</body>
+</html>
