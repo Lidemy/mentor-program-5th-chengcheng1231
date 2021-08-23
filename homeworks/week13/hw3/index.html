@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Twitch Top Games</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./style-week8-2.css"/>
+  <link rel="stylesheet "href="https://necolas.github.io/normalize.css/8.0.1/normalize.css"/>
+</head>
+
+<body>
+	<nav class="navbar">
+		<div class="navbar__site-name">
+			Twitch Top Games
+		</div>
+		<ul class="navbar__list">
+		</ul>
+	</nav>	
+	<section class="banner">
+		<div class="gameInformation">
+			<div class="gameName"></div>
+			<div> Top 20 popular live streams sorted by current viewers</div>
+		</div>		
+		<div class="streamSection">
+		</div>
+	</section>
+
+	<script>
+		const API_URL = 'https://api.twitch.tv/kraken'
+		const API_GET_SETTING = {
+				method:'GET',
+				headers: {
+					'Client-ID': '8j80nypdts7hk726mmtk4yh67c54af' ,
+					'Accept':'application/vnd.twitchtv.v5+json'
+				}
+			}
+		const STREAM_TEMPLATE = `
+					<div class="streamScreen">
+						<img src="$preview">
+					</div>
+					<div class="streamerInformation">
+						<div class="streamerIcon">
+							<img src="$logo">
+						</div>
+						<div class="streamerText">
+							<div class="streamerTheme"> $status</div>
+							<div class="streamerName">$display_name</div>
+						</div>
+					</div>
+					
+					`
+
+		async function getHotGames () {
+			const hotGamesresponse = await fetch(`${API_URL}/games/top`, API_GET_SETTING)
+			const hotGamesData = await hotGamesresponse.json()
+			return hotGamesData
+		}
+
+		async function getStreams (gameName) {
+			const streamDataResponse = await fetch(`${API_URL}/streams?game=${encodeURIComponent(gameName)}`, API_GET_SETTING)
+			const streamData = await streamDataResponse.json()
+			return streamData
+		}
+
+		async function runFiveHotGames() {
+			try {
+				const hotGamesData = await getHotGames ()
+				for (let i=0 ; i < 5; i++) {
+					let element = document.createElement('li')
+					element.innerHTML = `<a href="#">${hotGamesData.top[i].game.name}</a>`
+					document.querySelector('.navbar__list').appendChild(element)				
+				}				
+				changeChannel (hotGamesData.top[0].game.name)
+			}catch(err) {
+				console.log(err)
+			}
+		}
+		runFiveHotGames()
+
+
+		async function changeChannel(gameName) {
+			try {		
+				const streamData = await getStreams(gameName)
+				document.querySelector('.streamSection').innerHTML = ''
+				document.querySelector('.gameName').innerHTML = gameName
+				for (let i=0 ; i < 20; i++) {
+					const div = document.createElement('div')
+					div.classList.add('streamWindow')	
+					div.innerHTML = STREAM_TEMPLATE
+						.replace('$preview', streamData.streams[i].preview.large)
+						.replace('$logo', streamData.streams[i].channel.logo)
+						.replace('$status', streamData.streams[i].channel.status)
+						.replace('$display_name', streamData.streams[i].channel.display_name)					
+					document.querySelector('.streamSection').appendChild(div)	
+				}
+			} catch(err) {
+				console.log(err)
+			}
+		}
+
+		document.querySelector('.navbar__list').addEventListener('click', 
+			function(e) {
+				changeChannel (e.target.innerText)
+			}
+		)
+	</script>
+</body>
+</html>
