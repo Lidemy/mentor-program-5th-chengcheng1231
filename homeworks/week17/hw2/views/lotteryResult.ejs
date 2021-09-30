@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <%- include('template/head') %>
+</head>
+<body class="debug">
+    <%- include('template/navbar') %> 
+	<div class="banner__prize">
+        <div class="drawResult__text">
+            <%=prize.prizeName %>
+            <br>
+            <%=prize.description %>
+        </div>
+        <div class="draw__picture">
+            <img src="<%=prize.picUrl %>">
+        </div>
+        <div class="drawResult"></div>      
+	</div>
+    <%- include('template/footer') %> 
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <%- include('template/head') %>
+</head>
+<body class="debug">
+    <%- include('template/navbar') %> 
+    <% if(totalWeight) { %> 
+        <div class="alert alert-danger" role="alert">
+            權重加總未等於 100 %，無法進行抽獎！
+        </div>
+    <% } %>
+	<section class="banner manage">
+    <% prizes.forEach(function(prize) { %>
+        <div class="card" style="width: 18rem;">
+            <img src="<%=prize.picUrl %>" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title"><%=prize.prizeName %></h5>
+              <p class="card-text"><%=prize.description %></p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">抽獎機率：<%=prize.weight %> %</li>
+            </ul>
+            <div class="card-body">
+              <a href="/edit-prize/<%=prize.id %>" class="card-link">編輯</a>
+              <a href="/delete-prize/<%=prize.id %>" class="card-link">刪除</a>
+            </div>
+        </div>
+    <% }) %>
+        <div class="card">
+            <h5 class="card-header">新增獎項</h5>
+            <div class="card-body">
+              <a href="/add-prize" class="btn btn-primary">+</a>
+            </div>
+        </div>
+	</section>
+    <%- include('template/footer') %> 
+</body>
+</html>

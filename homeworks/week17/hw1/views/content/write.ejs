@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%- include('../template/head') %>
+</head>
+<body>
+    <%- include('../template/navbar') %>
+    <div class="container-wrapper">
+        <div class="layout">
+            <div class="layout__space"></div>
+            <div class="posts">
+                <article class="post">
+                    <div class="post__header">
+                        <div class="post__title">Write a story</div>
+                    </div>
+                    <div class="post__info">
+                        <div class="post__authorAvatar">
+                            <img src="/trump.jpg"/>
+                        </div>
+                        <div class="post__authorName">
+                            <%=username  %> 
+                        </div>
+                    </div>
+                   
+                    <form class="form" method="POST" action="./write-article">
+                        <input class="form__title" type="text" name="title" placeholder="Title"/><br>
+                        <br>
+                        <textarea class="form__textarea" type='text' name='content' rows="10" placeholder="Tell your story..." ></textarea><br>
+                        <input class="form__submit-btn" type="submit" value="Publish"/>
+                    </form>
+                    <h2 class="inputError"> <%=errorMessage %> </h2>
+                    <div class="post__hr"></div>
+                </article>
+            </div>
+            <div class="layout__space"></div>
+        </div>
+    </div>
+    <footer>Copyright © 2020 <%=username  %>'s Blog All Rights Reserved.</footer>
+    <script></script>
+</body>
+</html>

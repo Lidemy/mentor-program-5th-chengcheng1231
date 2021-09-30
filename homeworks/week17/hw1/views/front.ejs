@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+    <head>
+        <%- include('template/head') %>
+    </head>
+    <body>
+        <%- include('template/navbar') %> 
+        <div class="container-wrapper">
+            <div class="layout">
+                <div class="author">
+                    <div class="author__avatar">
+                        <img src="trump.jpg"/>
+                    </div>
+                    <div class="author__name"><%=users[0].username %></div>
+                    <div class="author__about"><%=users[0].about %></div>
+                    <div class="author__hr"></div>
+                </div>
+                <div class="posts">
+                    <% users[0].hw17_contents.forEach(function(content) { %>
+                        <article class="post">
+                            <div class="post__time">
+                                <%= content.createdAt %>
+                            </div>
+                            <div class="post__header">
+                                <a class="post__title" href="/article/<%= content.id %>"><%= content.article_titile %></a>
+                            </div>
+                            <div class="post__content"> <%= content.article_content %>
+                            </div>
+                            <a class="btn-read-more" href="/article/<%= content.id %>">Read More...</a>
+                            <div class="post__hr"></div>
+                        </article>
+                    <% }) %> 
+                </div>
+                <div class="layout__space"></div>
+            </div>
+        </div>
+        <footer>Copyright © 2020 <%=users[0].username %>'s Blog All Rights Reserved.</footer>
+    </body>
+</html>
