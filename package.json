@@ -29,6 +29,10 @@
     "lint-staged": "^10.5.4"
   },
   "dependencies": {
+<<<<<<< HEAD
+=======
+    "ejs": "^3.1.6",
+>>>>>>> bab6829... test
     "request": "^2.88.2"
   }
 }

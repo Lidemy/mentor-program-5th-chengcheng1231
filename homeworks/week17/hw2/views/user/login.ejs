@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%- include('../template/head') %>
+</head>
+    <%- include('../template/navbar') %>
+    <section class="banner">
+        <div>
+            <form class="draw p-4" method="POST" action="/login">
+                <legend class="mb-5">Please enter your sign-in information</legend>
+                <div class="mb-5">
+                  <label for="exampleInputEmail1" class="form-label">Username</label>
+                  <input type="text" class="form-control" name='username'>
+                </div>
+                <div class="mb-5">
+                  <label for="exampleInputPassword1" class="form-label">Password</label>
+                  <input type="password" class="form-control" name='password'>
+                </div>
+                <% if(errorMessage.length > 0){ %> 
+                <div class="alert alert-danger" role="alert">
+                    <%=errorMessage %>
+                </div>
+                <% } %> 
+                <button type="submit" class="btn btn-primary mt-2">Submit</button>
+            </form>
+        </div>
+		
+	</section>
+    <%- include('../template/footer') %> 
+<body>
+     
+</body>
+</html>
