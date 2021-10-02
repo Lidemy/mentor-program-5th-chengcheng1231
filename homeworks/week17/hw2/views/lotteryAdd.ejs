@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <%- include('template/head') %>
+</head>
+<body class="debug">
+    <%- include('template/navbar') %> 
+    <section class="banner">
+      <div>
+          <form class="draw p-4" method="POST" action="/add-prize">
+              <legend class="mb-4">Please enter prize information</legend>
+              <div class="mb-2">
+                <label for="exampleInputEmail1" class="form-label">獎項圖片網址</label>
+                <input type="url" class="form-control" name='prizeUrl' required>
+              </div>
+              <div class="mb-2">
+                <label for="exampleInputPassword1" class="form-label">獎項結果</label>
+                <input type="text" class="form-control" name='prizeResult' required>
+              </div>
+              <div class="mb-2">
+                <label for="exampleInputPassword1" class="form-label">獎項敘述</label>
+                <input type="text" class="form-control" name='prizeDesc' required>
+              </div>
+              <div class="mb-2">
+                <label for="exampleInputPassword1" class="form-label">獎項權重（請設定與其他獎項的總和等於 100 %)</label>
+                <input type="number" max="100" class="form-control" name='prizeWeight' required>
+              </div>
+              <% if(errorMessage.length > 0){ %> 
+              <div class="alert alert-danger" role="alert">
+                  <%=errorMessage %>
+              </div>
+              <% } %> 
+              <button type="submit" class="btn btn-primary mt-2">Submit</button>
+          </form>
+      </div>
+    </section>
+    <%- include('template/footer') %> 
+</body>
+</html>

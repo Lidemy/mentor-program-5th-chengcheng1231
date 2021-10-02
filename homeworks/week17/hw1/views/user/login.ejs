@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%- include('../template/head') %>
+</head>
+
+<body>
+    <div class="singInBoard">
+        <div class="singInBoard__navbar">
+            <h1 class="singInBoard__title">Log in</h1>
+            <div class="functionSection">
+                <a class="functionSection__btn" href="/">Home Page</a>
+            </div>
+        </div>
+        <form class="singInBoard__form" method="POST" action="/login">
+            USERNAME：<br>
+            <input type="text" name='username'></input>
+            <br>
+            <br>
+            PASSWORD：<br>
+            <input type="password" name='password'></input>
+            <br>
+            <br>
+            <input class="singInBoard__submit-btn" type="submit" value="Submit"></input>
+        </form>
+        <h2 class="inputError"> <%=errorMessage %> </h2>
+    </div>
+</body>
+</html>
