@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%- include('../template/head') %>
+</head>
+
+<body>
+    <%- include('../template/navbar') %>
+    <div class="container-wrapper">
+        <div class="layout">
+            <div class="layout__space"></div>
+            <div class="posts">
+                <article class="post">
+                    <div class="post__header">
+                        <div class="post__title">Edit the story</div>
+                    </div>
+                    <div class="post__info">
+                        <div class="post__authorAvatar">
+                            <img src="/trump.jpg"/>
+                        </div>
+                        <div class="post__authorName">
+                            <%=users[0].hw17_contents[0].username %>
+                        </div>
+                    </div>
+                    <form class="form" method="POST" action="/edit-article/<%= users[0].hw17_contents[0].id %>">
+                        <input class="form__title" type="text" name="title" value="<%=users[0].hw17_contents[0].article_titile %>"/><br>
+                        <br>
+                        <textarea class="form__textarea" type='text' name='content' rows="10"><%=users[0].hw17_contents[0].article_content %></textarea><br>
+                        <input type="hidden" name="userId" value="<%=users[0].hw17_contents[0].hw17UserId %>"/>
+                        <input class="form__submit-btn" type="submit" value="Update"/>
+                    </form>
+                    <h2 class="inputError"> <%=errorMessage %> </h2>
+                    <div class="post__hr"></div>
+                </article>
+            </div>
+            <div class="layout__space"></div>
+        </div>
+    </div>
+    <footer>Copyright © 2020 <%=users[0].hw17_contents[0].username %>'s Blog All Rights Reserved.</footer>
+    <script>
+    </script>
+</body>
+</html>
