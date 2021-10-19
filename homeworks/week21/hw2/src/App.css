@@ -1,0 +1,88 @@
+.square {
+  background: rgb(240, 192, 104);
+  
+  float: left;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 34px;
+  height: 34px;
+  margin-right: -2px;
+  margin-top: -2px;
+  padding: 0;
+  text-align: center;
+  width: 34px;
+  cursor: pointer;
+}
+
+.square-column {
+  width: 1px;
+  height: 100%;
+  background: #070707f5;
+  margin: 0 auto;
+  position: relative;
+}
+
+.square-column:after {
+  content: "";
+  background: #070707f5;
+  height: 1px;
+  width: 34px;
+  left: -17px;
+  top: 17px;
+  position: absolute;
+}
+
+.square-black-circle {
+  width: 25px;
+  height: 25px;
+  background: black;
+  position: absolute;
+  margin-left: 4px;
+  margin-top: 4px;
+  border-radius: 20px;
+  z-index: 1;
+}
+
+.square-white-circle {
+  width: 25px;
+  height: 25px;
+  background: rgb(255, 255, 255);
+  position: absolute;
+  margin-left: 4px;
+  margin-top: 4px;
+  border: black solid 1px;
+  border-radius: 20px;
+  z-index: 1;
+}
+
+.board-section {
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.board-row:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.status {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 4px;
+}
+
+.reset-btn {
+  padding: 8px 24px;
+  font-size: 24px;
+  margin: 4px;
+  background: rgb(41, 109, 45);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+}
+
+.reset-btn:hover {
+  background: rgb(159, 224, 170);
+}
