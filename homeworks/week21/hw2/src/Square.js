@@ -3,10 +3,11 @@ import React from 'react';
 
 // square components
 export default function Square({squareData, squarePosition, handleChessData}) {
+  var chessClassName
   if (squareData === "black" ) {
-    var chessClassName = "square-black-circle"
+    chessClassName = "square-black-circle"
   } else if (squareData === "white") {
-    var chessClassName = "square-white-circle"
+    chessClassName = "square-white-circle"
   }
 
   const handleChessClick = () => {

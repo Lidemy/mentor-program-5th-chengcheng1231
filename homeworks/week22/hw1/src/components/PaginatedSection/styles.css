@@ -1,0 +1,44 @@
+.PaginatedContainer {
+    font-family: sans-serif;
+    text-align: center;
+    font-family: sans-serif;
+    margin-top: 40px;
+}
+
+img {
+    height: 100px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    cursor: pointer;
+}
+
+.pagination a {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #a0a0a5;
+    color: #a0a0a5;
+}
+
+.pagination a:hover {
+    background: #a0a0a5;
+    color: white;
+}
+
+.pagination__link {
+    font-weight: bold;
+}
+
+.pagination__link--active a {
+    color: #fff;
+    background: #0e5f22;
+}
+
+.pagination__link--disabled a {
+    color: rgb(216, 216, 218);
+    border: 1px solid rgb(216, 216, 218);
+}
+
