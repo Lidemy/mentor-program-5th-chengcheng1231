@@ -34,7 +34,7 @@ export default function App() {
   );
 }
 ```
-![usestate4](useState4.png)
+![usestate4](p4.png)
 
 若 func 部分改寫成以下就能改善
 ```JavaScript
@@ -42,7 +42,7 @@ function handleClick() {
     setTimeout(()=>{setValue(value => value + 1)},3000)
   }
 ```
-![usestate5](useState5.png)
+![usestate5](p5.png)
 
 2. 上一個例子說到 setValue 是非同步的，因此在使用 setValue 更新 value 後若直接 `console.log(value)` 印出時也不會是你預期的結果。如以下例子，value 的初始值是 1，當你按下三次按鈕時你預期在 setValue(value + 1) 完會印出 2、3、4，但結果是 1、2、3，這個解決方式可以用待會會介紹到的 useEffect。
 
@@ -62,7 +62,7 @@ export default function App() {
   );
 }
 ```
-![usestate](useState.png)
+![usestate](p1.png)
 
 
 3. initialState 參數只會在初始 render 時使用，但在後續 component re-render 時還是會執行到 initialState 的設定，但是今天若這個初始設定是一個很複雜的過程就會很吃效能，因此我們可以用 Lazy initial state 來改善，可以傳入一個 function，回傳的東西就是初始值，只會在初始 render 時被執行，re-render 並不會被執行。<br>
@@ -76,7 +76,7 @@ const [ value, setValue] = useState(complicatedfunc())
     return 1
   }
 ```
-![usestate2](useState2.png)
+![usestate2](p2.png)
 
 ```JavaScript
 const [ value, setValue] = useState(() => {
@@ -86,7 +86,7 @@ const [ value, setValue] = useState(() => {
   
   console.log(value)
 ```
-![usestate3](useState3.png)
+![usestate3](p3.png)
 
 ### useEffect （lifecycle ： run effects 階段，mount 和 update 時都會執行）
 
