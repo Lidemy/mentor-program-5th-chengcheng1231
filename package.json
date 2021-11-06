@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "ejs": "^3.1.6",
-    "request": "^2.88.2"
+    "request": "^2.88.2",
+    "styled-components": "^5.3.3"
   }
 }

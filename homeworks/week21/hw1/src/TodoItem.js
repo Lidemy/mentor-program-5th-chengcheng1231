@@ -80,9 +80,9 @@ export default function TodoItem({
 
     return (
         <ItemSection data-todo-id={todo.id} complete={todoDisplay}>
-        <ItemCheckbox type="checkbox" checked={todo.isDone} onChange={handleTogglerClick}/>
-        <ItemText strikeThrough={todo.isDone}>{todo.content}</ItemText>
-        <ItemDelete onClick={handleDeleteClick}></ItemDelete>
+          <ItemCheckbox type="checkbox" checked={todo.isDone} onChange={handleTogglerClick}/>
+          <ItemText strikeThrough={todo.isDone}>{todo.content}</ItemText>
+          <ItemDelete onClick={handleDeleteClick}></ItemDelete>
         </ItemSection>
     )
 }
