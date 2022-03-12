@@ -69,7 +69,7 @@ export default function TodoItem({
     handleDeleteTodo,
     todoDisplay
     }) {
-
+      
     const handleTogglerClick = (e) => {
         handleToggleIsDone(todo.id);
     }
